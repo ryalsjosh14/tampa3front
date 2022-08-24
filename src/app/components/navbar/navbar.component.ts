@@ -8,21 +8,21 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  goToHome(){
-    this.router.navigate(['/', 'home']);
-  }
+  // goToHome(){
+  //   this.router.navigate(['/', 'home']);
+  // }
 
-  goToOrderForm(){
-    this.router.navigate(['/', 'order']);
-  }
+  // goToOrderForm(){
+  //   this.router.navigate(['/', 'order']);
+  // }
 
-  goToOrderHistory(){
-    this.router.navigate(['/', 'history']);
-  }
+  // goToOrderHistory(){
+  //   this.router.navigate(['/', 'history']);
+  // }
 
 }

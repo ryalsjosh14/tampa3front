@@ -1,18 +1,12 @@
 
 
-<mat-toolbar></mat-toolbar>
+<mat-toolbar color="primary">
+    <span>Tampa3</span>
 
+    <a mat-button routerLink="home">Home</a>
+    <a mat-button routerLink="placeOrder">Place Order</a>
+    <a mat-button routerLink="history">Order History</a>
+</mat-toolbar>
 
-<ul class="navigation">
-  <li>
-    <a (click)="goToHome()">Home</a>
-  </li>
-  <li>
-    <a (click)="goToOrderForm()">Place Order</a>
-  </li>
-  <li>
-    <a (click)="goToOrderHistory()">Order History</a>
-  </li>
-</ul>
+<router-outlet></router-outlet>
 
-<router-outlet> </router-outlet>
