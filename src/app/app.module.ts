@@ -12,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
     NavbarComponent
   ],
   imports: [
