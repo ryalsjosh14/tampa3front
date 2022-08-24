@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -13,7 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
   declarations: [
     AppComponent,
     OrderHistoryComponent,
-    NavbarComponent
+    NavbarComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,
