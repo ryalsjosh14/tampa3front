@@ -9,19 +9,24 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderHistoryComponent,
     NavbarComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    OrderHistoryComponent,
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

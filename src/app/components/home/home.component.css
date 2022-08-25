@@ -1,0 +1,25 @@
+.table-head{
+    background-color: lightblue;
+}
+
+.table-bod{
+    background-color: lightgray;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+
+td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+
