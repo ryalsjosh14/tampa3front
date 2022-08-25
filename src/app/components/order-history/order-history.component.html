@@ -38,42 +38,20 @@
 							<th class="font-weight-bold py-2 border-0 ">Average Price per Share</th>
 							<th class="font-weight-bold py-2 border-0 ">Total</th>
 							<th class="font-weight-bold py-2 border-0 ">Order Date</th>
-							<th class="font-weight-bold py-2 border-0 ">Action</th>
+							<!-- <th class="font-weight-bold py-2 border-0 ">Action</th> -->
 						</tr>
-						<!--Example Data-->
-						<!-- <tr>
-							<td> 01 </td>
-							<td> APPL </td>
-							<td> Purchase </td>
-							<td> 5 </td>
-							<td> 170 </td>
-							<td> 850 </td>
-							<td> Complete </td>
-							<td> n/a </td>
-						</tr>
-						<tr>
-							<td> 01 </td>
-							<td> APPL </td>
-							<td> Purchase </td>
-							<td> 5 </td>
-							<td> 170 </td>
-							<td> 850 </td>
-							<td> Complete </td>
-							<td> n/a </td>
-						</tr>
-						<tr>
-							<td> 01 </td>
-							<td> APPL </td>
-							<td> Purchase </td>
-							<td> 5 </td>
-							<td> 170 </td>
-							<td> 850 </td>
-							<td> Complete </td>
-							<td> n/a </td>
-						</tr> -->
-						
 					</thead>
-					<tbody>
+						
+					<tbody class="table-body">
+						<tr *ngFor="let order of orders">
+							<td>{{order.OrderId}}</td>
+							<td>{{order.ticker}}</td>
+							<td>{{order.OrderType}}</td>
+							<td>{{order.numShares}}</td>
+							<td>{{order.averagePrice}}</td>
+							<td>{{order.TotalPrice}}</td>
+							<td>{{order.lastPurchaseDate}}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
