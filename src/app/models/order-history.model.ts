@@ -1,9 +1,9 @@
 export interface Orders{
-    OrderId?:number;
+    id?:number;
     ticker?:String;
-    averagePrice?:number; //price to buy in db
-    numShares?:number;
+    priceToBuy?:number; //price to buy in db
+    numberOfShares?:number;
     TotalPrice?:number;
-    OrderType?:String; //status code in db
-    lastPurchaseDate?:String;
+    STATUS_code?:String; //status code in db
+    orderDate?:String;
 }
