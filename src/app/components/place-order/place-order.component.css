@@ -1,7 +1,7 @@
 .title
 {
     font-family: Helvetica;
-    /* text-align: center;  */
+    text-align: center; 
 }
 
 .entry
@@ -13,8 +13,48 @@
 }
 
 .containerdiv {
-  width: 300px;
-  border: 2px solid rgb(255, 255, 255);
   padding: 50px;
-  margin: 20px;
+  margin: auto;
+  width: 60%;
+  border: 3px solid #adadad;
+  padding: 10px;
+}
+
+.ticker-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+body {
+  text-align: center;
+}
+form {
+  display: inline-block;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+.arrange-horizontally > * {
+  display: inline-block;
+  text-align: center;
 }
