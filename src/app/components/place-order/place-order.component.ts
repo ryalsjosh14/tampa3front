@@ -51,6 +51,11 @@ export class PlaceOrderComponent implements OnInit {
     this.buyTotal = 0;
   }
 
+  getRecord(row: StockEntry)
+  {
+    console.log(row);
+  }
+
   ngOnInit() {
   }
 

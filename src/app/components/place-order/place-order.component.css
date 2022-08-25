@@ -21,9 +21,15 @@
 }
 
 .ticker-form {
+  padding: 20px;
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+}
+
+.mat-row:hover {
+  background-color: rgb(234, 233, 233);
+  cursor: pointer;
 }
 
 .example-full-width {

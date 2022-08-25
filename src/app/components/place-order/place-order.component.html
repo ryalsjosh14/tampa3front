@@ -22,14 +22,15 @@
         </mat-error>
       </mat-form-field>
     </form>
-    
+  
+
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
     
         <!-- Ticker Column -->
         <ng-container matColumnDef="symbol">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-          <td mat-cell *matCellDef="let row"> {{row.symbol}} <button (click)="setCurrentPurchaseElements(row)">+</button> </td>
+          <td mat-cell *matCellDef="let row"> {{row.symbol}} </td>
         </ng-container>
 
         <!-- Name Column -->
@@ -46,20 +47,18 @@
         
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="setCurrentPurchaseElements(row)"></tr>
     
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
+
+        <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row> -->
       </table>
     
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <!-- <tr mat-row (click)="cellClicked(row.id)" *matRowDef="let row;
-columns: displayedColumns;"></tr> -->
     </div>
-
-    <br/>
 
     <div style="padding:15px">
       <form class="ticker-form">
@@ -76,7 +75,7 @@ columns: displayedColumns;"></tr> -->
       <p>Total: ${{buyTotal}}</p>
     </div>
 
-    <button class="w3-button w3-black" >Submit</button>
+    <button mat-raised-button color="primary">Submit</button>
   </div>
 
 </body>
