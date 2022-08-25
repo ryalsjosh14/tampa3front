@@ -1,0 +1,46 @@
+<div class="page">
+    <div>
+
+    
+    
+
+        <p>Welcome</p>
+
+        <h1>Total Balance</h1>
+    
+
+    
+    
+
+
+    
+
+        <table>
+            <thead class="table-head">
+                <th class="mx-2">Symbol</th>
+                <th>Value</th>
+                <th>Shares</th>
+                <th>Current Price</th>
+                <th>Net Gain/Loss</th>
+                <th>Last Purchase Date</th>
+            </thead>
+        
+            <tbody class="table-bod">
+                <tr *ngFor="let holding of holdings">
+                    <td>{{holding.ticker}}</td>
+                    <td>{{holding.ticker}}</td>
+                    <td>{{holding.numShares}}</td>
+                    <td>{{holding.ticker}}</td>
+                    <td>{{holding.ticker}}</td>
+                    <td>{{holding.lastPurchaseDate}}</td>
+                </tr>
+        
+            </tbody>
+            
+        </table>
+    </div>
+</div>
+
+
+
+
