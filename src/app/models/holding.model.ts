@@ -3,4 +3,6 @@ export interface Holding{
     numShares?:number;
     averagePrice?:number;
     lastPurchaseDate?:String;
+    price?:number;
+    totalValue?:number
 }
