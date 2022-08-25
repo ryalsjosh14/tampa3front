@@ -6,7 +6,7 @@
 
         <p>Welcome</p>
 
-        <h1>Total Balance</h1>
+        <h1>Total Balance: ${{balance}}</h1>
     
 
     
@@ -28,10 +28,10 @@
             <tbody class="table-bod">
                 <tr *ngFor="let holding of holdings">
                     <td>{{holding.ticker}}</td>
-                    <td>{{holding.ticker}}</td>
+                    <td>${{holding.totalValue}}</td>
                     <td>{{holding.numShares}}</td>
-                    <td>{{holding.ticker}}</td>
-                    <td>{{holding.ticker}}</td>
+                    <td>{{holding.price}}</td>
+                    <td></td>
                     <td>{{holding.lastPurchaseDate}}</td>
                 </tr>
         
