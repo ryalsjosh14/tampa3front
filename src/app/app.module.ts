@@ -11,6 +11,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table' 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +34,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
