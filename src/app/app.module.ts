@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { PlaceOrderComponent, PlaceOrderComponentDialog } from './components/place-order/place-order.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table' 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     NavbarComponent,
     PlaceOrderComponent,
+    PlaceOrderComponentDialog,
     OrderHistoryComponent,
     HomeComponent
 
@@ -42,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Place Order</h1>
+<div mat-dialog-content class = "arrange-horizontally">
+  I am 
+  <button mat-raised-button class="button-text" [disabled]="purchaseIsBuying" (click)="purchaseIsBuying = true;">Buying</button>
+  <button mat-raised-button class="button-text" [disabled]="!purchaseIsBuying" (click)="purchaseIsBuying = false;">Selling</button>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>

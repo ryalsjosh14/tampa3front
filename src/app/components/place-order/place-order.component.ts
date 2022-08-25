@@ -1,9 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { PlaceOrderService, OrderEntry } from 'src/app/services/place-order.service';
 
 export interface StockEntry 
 {
@@ -39,7 +41,7 @@ export class PlaceOrderComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() 
+  constructor(private placeOrderSvc: PlaceOrderService, public dialog: MatDialog) 
   {
     // Initialize dummy stock data
     const stocks = Array.from({length: 100}, (_, k) => createNewUser());
@@ -51,17 +53,35 @@ export class PlaceOrderComponent implements OnInit {
     this.buyTotal = 0;
   }
 
-  getRecord(row: StockEntry)
-  {
-    console.log(row);
-  }
-
   ngOnInit() {
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  postOrder()
+  {
+    if (this.numShares == 0)
+      return;
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    var date = yyyy + "-" + mm + "-" + dd + "T00:00:00.000+00:00";
+
+    const newOrderEntry = {
+      ticker : this.purchaseSymbol , 
+      priceToBuy: this.purchaseSharePrice,
+      numberOfShares: this.numShares, 
+      orderDate: date, 
+      status_CODE: "buy"
+    };
+
+    this.placeOrderSvc.postOrder(newOrderEntry);
   }
 
   applyFilter(event: Event) {
@@ -88,6 +108,40 @@ export class PlaceOrderComponent implements OnInit {
     }
   }
 
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void 
+  {
+    this.dialog.open(PlaceOrderComponentDialog, {
+      height: '40%',
+      width: '60%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+}
+
+function getDataFromAPI()
+{
+  const userAction = async () => {
+    const response = await fetch('http://example.com/movies.json');
+    const myJson = await response.json(); //extract JSON from the http response
+    return myJson
+  }
+}
+
+@Component({
+  selector: 'place-order.component-dialog',
+  templateUrl: 'place-order.component-dialog.html',
+  styleUrls: ['./place-order.component.css']
+})
+export class PlaceOrderComponentDialog 
+{
+  purchaseIsBuying: boolean
+
+  constructor(public dialogRef: MatDialogRef<PlaceOrderComponentDialog>) 
+  {
+    this.purchaseIsBuying = false;
+  }
 }
 
 /**Required for dummy data entry */

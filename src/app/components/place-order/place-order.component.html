@@ -47,14 +47,13 @@
         
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="setCurrentPurchaseElements(row)"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="setCurrentPurchaseElements(row)"></tr>  
+        <!-- (click)="openDialog('150ms', '75ms') -->
+        <!-- setCurrentPurchaseElements(row) -->
     
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
-
-        <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row  *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row> -->
       </table>
     
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
@@ -75,7 +74,7 @@
       <p>Total: ${{buyTotal}}</p>
     </div>
 
-    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="primary" (click)="postOrder()">Submit</button>
   </div>
 
 </body>

@@ -32,6 +32,11 @@
   cursor: pointer;
 }
 
+.mat-raised-button
+{
+  margin: 10px;
+}
+
 .example-full-width {
   width: 100%;
 }
@@ -52,7 +57,9 @@ td, th {
 body {
   text-align: center;
 }
-form {
+
+form 
+{
   display: inline-block;
 }
 
