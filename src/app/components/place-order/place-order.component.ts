@@ -6,13 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { PlaceOrderService, OrderEntry } from 'src/app/services/place-order.service';
-
-export interface StockEntry 
-{
-  symbol: string;
-  name: string;
-  value: string;
-}
+import { StockEntry } from 'src/app/models/stock-entry.model';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -33,10 +27,12 @@ export class PlaceOrderComponent implements OnInit {
 
   displayedColumns: string[] = ['symbol', 'name', 'value'];
   dataSource: MatTableDataSource<StockEntry>;
+  stockList: StockEntry[];
   numShares: number;
   purchaseSymbol: string;
   purchaseSharePrice: number;
   buyTotal: number;
+  purchaseIsBuy: boolean;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -51,9 +47,14 @@ export class PlaceOrderComponent implements OnInit {
     this.purchaseSymbol = "N/A";
     this.purchaseSharePrice = 0.0;
     this.buyTotal = 0;
+    this.purchaseIsBuy = false;
+    this.stockList = [];
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.getDataFromAPI();
+    
   }
 
   ngAfterViewInit() {
@@ -68,7 +69,7 @@ export class PlaceOrderComponent implements OnInit {
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     
     var date = yyyy + "-" + mm + "-" + dd + "T00:00:00.000+00:00";
@@ -78,10 +79,13 @@ export class PlaceOrderComponent implements OnInit {
       priceToBuy: this.purchaseSharePrice,
       numberOfShares: this.numShares, 
       orderDate: date, 
-      status_CODE: "buy"
+      status_CODE: this.purchaseIsBuy ? "buy" : "sell"
     };
 
-    this.placeOrderSvc.postOrder(newOrderEntry);
+    this.placeOrderSvc.postOrder(newOrderEntry).subscribe(
+      (next) => console.log(next),
+      (error) => console.log(error)
+    );
   }
 
   applyFilter(event: Event) {
@@ -118,16 +122,16 @@ export class PlaceOrderComponent implements OnInit {
     });
   }
 
+  getDataFromAPI()
+  {
+    this.placeOrderSvc.getOrders().subscribe((data: StockEntry[]) => {
+      this.stockList = data
+      console.log(this.stockList); });
+  }
+
 }
 
-function getDataFromAPI()
-{
-  const userAction = async () => {
-    const response = await fetch('http://example.com/movies.json');
-    const myJson = await response.json(); //extract JSON from the http response
-    return myJson
-  }
-}
+
 
 @Component({
   selector: 'place-order.component-dialog',
