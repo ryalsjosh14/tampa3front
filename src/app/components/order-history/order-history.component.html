@@ -35,7 +35,7 @@
 							<th class="font-weight-bold py-2 border-0 quantity">Ticker</th>
 							<th class="font-weight-bold py-2 border-0 ">Order Type</th>
 							<th class="font-weight-bold py-2 border-0 ">Number of Shares</th>
-							<th class="font-weight-bold py-2 border-0 ">Average Price per Share</th>
+							<th class="font-weight-bold py-2 border-0 ">Price per Share</th>
 							<th class="font-weight-bold py-2 border-0 ">Total</th>
 							<th class="font-weight-bold py-2 border-0 ">Order Date</th>
 							<!-- <th class="font-weight-bold py-2 border-0 ">Action</th> -->
@@ -46,11 +46,11 @@
 						<tr *ngFor="let order of orders">
 							<td>{{order.id}}</td>
 							<td>{{order.ticker}}</td>
-							<td>{{order.priceToBuy}}</td>
+							<td>{{order.status_CODE}}</td>
 							<td>{{order.numberOfShares}}</td>
-							<td>{{order.orderDate}}</td>
-							<td>{{order.STATUS_code}}</td>
-							<td>{{order.orderDate}}</td>
+							<td>{{order.priceToBuy}}</td>
+							<td>{{order.status_CODE}}</td>
+							<td>{{getDate(order)}}</td>
 						</tr>
 					</tbody>
 				</table>

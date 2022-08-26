@@ -22,4 +22,8 @@ export class OrderHistoryComponent implements OnInit {
     this.orderService.getOrders().subscribe((data: Orders[]) => this.orders = data);
 
   }
+
+  getDate(ord:Orders){
+    return ord.orderDate?.slice(0,10);
+  }
 }

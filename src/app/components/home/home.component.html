@@ -7,13 +7,7 @@
         <p>Welcome</p>
 
         <h1>Total Balance: ${{balance}}</h1>
-    
 
-    
-    
-
-
-    
 
         <table>
             <thead class="table-head">
@@ -31,8 +25,8 @@
                     <td>${{holding.totalValue}}</td>
                     <td>{{holding.numShares}}</td>
                     <td>{{holding.price}}</td>
-                    <td></td>
-                    <td>{{holding.lastPurchaseDate}}</td>
+                    <td>${{getNetGain(holding)}}</td>
+                    <td>{{getDate(holding)}}</td>
                 </tr>
         
             </tbody>

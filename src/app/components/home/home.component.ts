@@ -29,13 +29,27 @@ export class HomeComponent implements OnInit {
       this.holdings.map( hold => {
           this.yahooSvc.getPrice(hold.ticker).subscribe( (stock:MyStock)=>{
           hold.price = stock.price;
-          hold.totalValue = (hold.price && hold.numShares) ? hold.price * hold.numShares : 0;
+          hold.totalValue = (hold.price && hold.numShares) ? Math.round(hold.price * hold.numShares * 100) / 100 : 0.00;
           this.balance += hold.totalValue;
         });
 
       })
     
     });
+  }
+
+  getNetGain(hold:Holding){
+    if (hold.totalValue && hold.numShares && hold.averagePrice){
+      return (hold.totalValue - (hold.numShares * hold.averagePrice))
+
+    }
+    else{
+      return null
+    }
+  }
+
+  getDate(hold:Holding){
+    return hold.lastPurchaseDate?.slice(0,10);
   }
 
 

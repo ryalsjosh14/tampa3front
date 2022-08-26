@@ -4,6 +4,6 @@ export interface Orders{
     priceToBuy?:number; //price to buy in db
     numberOfShares?:number;
     TotalPrice?:number;
-    STATUS_code?:String; //status code in db
+    status_CODE?:String; //status code in db
     orderDate?:String;
 }
