@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Orders } from '../models/order-history.model';
-import { StockEntry } from '../components/place-order/place-order.component';
+import { StockEntry } from '../models/stock-entry.model';
 
 export interface OrderEntry 
 {
@@ -21,18 +21,18 @@ export class PlaceOrderService {
 
   postOrder(orderEntry : OrderEntry){
     //call http endpoint
-    const headers = { 'content-type': 'application/json'}  
+    const options = {headers: { 'content-type': 'application/json'} }
     let orderUrl = "http://tampa3rest-tampa3rest.openshift17.conygre.com/order/add/"
 
     console.log(orderEntry)
-    return this.http.post<any>(orderUrl, orderEntry, headers);
+    return this.http.post<any>(orderUrl, orderEntry, options);
   }
 
   getOrders()
   {
     //call http endpoint
-    let orderUrl = "http://tampa3rest-tampa3rest.openshift17.conygre.com/order/"
+    let orderUrl = "http://tampa3rest-tampa3rest.openshift17.conygre.com/stockRequest/all/all"
 
-    return this.http.get<Orders[]>(orderUrl);
+    return this.http.get<StockEntry[]>(orderUrl);
   }
 }
