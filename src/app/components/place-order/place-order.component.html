@@ -60,6 +60,9 @@
     </div>
 
     <div style="padding:15px">
+      I am 
+      <button mat-raised-button class="button-text" [disabled]="purchaseIsBuy" (click)="purchaseIsBuy = true;">Buying</button>
+      <button mat-raised-button class="button-text" [disabled]="!purchaseIsBuy" (click)="purchaseIsBuy = false;">Selling</button>
       <form class="ticker-form">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Number of Shares</mat-label>
