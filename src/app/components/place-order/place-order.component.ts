@@ -39,9 +39,9 @@ export class PlaceOrderComponent implements OnInit {
 
   constructor(private placeOrderSvc: PlaceOrderService, public dialog: MatDialog) 
   {
-    // Initialize dummy stock data
-    const stocks = Array.from({length: 100}, (_, k) => createNewUser());
-    this.dataSource = new MatTableDataSource(stocks);
+    this.stockList = [];
+    this.dataSource = new MatTableDataSource([createNewUser(true)]);
+    this.getDataFromAPI();
 
     this.numShares = 0;
     this.purchaseSymbol = "N/A";
@@ -53,7 +53,6 @@ export class PlaceOrderComponent implements OnInit {
 
   ngOnInit() 
   {
-    this.getDataFromAPI();
     
   }
 
@@ -99,8 +98,8 @@ export class PlaceOrderComponent implements OnInit {
 
   setCurrentPurchaseElements(row : StockEntry) 
   {
-    this.purchaseSymbol = row.symbol;
-    this.purchaseSharePrice = parseFloat(row.value);
+    this.purchaseSymbol = row.ticker;
+    this.purchaseSharePrice = row.price;
   }
 
   updateOrderInfo(event : Event)
@@ -126,7 +125,9 @@ export class PlaceOrderComponent implements OnInit {
   {
     this.placeOrderSvc.getOrders().subscribe((data: StockEntry[]) => {
       this.stockList = data
-      console.log(this.stockList); });
+      this.stockList.forEach((data) => data.price = Math.round(data.price * 100) / 100);
+      console.log(this.stockList); 
+      this.dataSource = new MatTableDataSource(this.stockList);});
   }
 
 }
@@ -172,7 +173,15 @@ charactersLength));
 }
 
 /** Builds and returns a new User. */
-function createNewUser(): StockEntry {
+function createNewUser(blank: boolean = false): StockEntry {
+  if (blank)
+  {
+    return {
+      ticker: "",
+      name: "",
+      price: 0,
+    };
+  }
   const name =
     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
     ' ' +
@@ -180,8 +189,8 @@ function createNewUser(): StockEntry {
     '.';
 
   return {
-    symbol: makeid(4),
+    ticker: makeid(4),
     name: name,
-    value: (Math.round(Math.random() * 10000)/100).toString(),
+    price: (Math.round(Math.random() * 10000)/100),
   };
 }
