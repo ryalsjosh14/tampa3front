@@ -21,9 +21,20 @@
 }
 
 .ticker-form {
+  padding: 20px;
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+}
+
+.mat-row:hover {
+  background-color: rgb(234, 233, 233);
+  cursor: pointer;
+}
+
+.mat-raised-button
+{
+  margin: 10px;
 }
 
 .example-full-width {
@@ -46,7 +57,9 @@ td, th {
 body {
   text-align: center;
 }
-form {
+
+form 
+{
   display: inline-block;
 }
 
