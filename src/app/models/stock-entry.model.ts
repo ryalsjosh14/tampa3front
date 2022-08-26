@@ -1,7 +1,7 @@
 
 export interface StockEntry 
 {
-  symbol: string;
+  ticker: string;
   name: string;
-  value: string;
+  price: number;
 }
